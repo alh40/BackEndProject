@@ -1,17 +1,26 @@
 package model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Timetable {
     @Id
-    @Column(name = "id", nullable = false)
+//    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String date;
     private int time;
+
+    @ManyToOne
+    @JoinColumn(name = "venue_id")
+    private Venue venue;
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
 
 
     public Timetable() {
@@ -21,6 +30,8 @@ public class Timetable {
         this.id = id;
         this.date = date;
         this.time = time;
+        this.movie = new Movie();
+        this.venue = new Venue();
     }
 
     enum days{
@@ -50,5 +61,21 @@ public class Timetable {
 
     public void setTime(int time) {
         this.time = time;
+    }
+
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 }
