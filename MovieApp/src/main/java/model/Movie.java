@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class MovieModel {
+public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,9 +16,16 @@ public class MovieModel {
     private String genre;
     private int price;
     @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "movie",
+            joinColumns = { @JoinColumn(name = "movie_id") },
+            inverseJoinColumns = { @JoinColumn(name = "venue_id") }
+    )
     @JsonIgnoreProperties(value = {"movies"})
     private Set<Venue> venues;
 
+    public Movie() {
+    }
 
 
 }
