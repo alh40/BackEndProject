@@ -1,5 +1,6 @@
 package model;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -92,4 +93,7 @@ public class Movie {
     public void setVenues(Set<Venue> venues) {
         this.venues = venues;
     }
+=======
+public class Movie {
+>>>>>>> origin/TimetableModel
 }
