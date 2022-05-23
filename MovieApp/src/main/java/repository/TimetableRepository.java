@@ -9,7 +9,7 @@ import java.util.List;
 public interface TimetableRepository extends JpaRepository<Timetable, Long> {
 
 
-    Timetable findByDate(Enum date);
+    Timetable findByDate(String date);
 
 
 
