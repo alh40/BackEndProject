@@ -10,16 +10,7 @@ public class Venue {
 
 
     @Id
-    @SequenceGenerator(
-            name = "venue_sequence",
-            sequenceName = "venue_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "venue_sequence"
-
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(
             name = "id",
             updatable = false
@@ -34,7 +25,7 @@ public class Venue {
     )
     private String name;
 
-    @ManyToMany(mappedBy = "venue")
+    @OneToMany(mappedBy = "venue")
     private List<Timetable> timetableList;
 
     @ManyToMany(mappedBy = "venue")
