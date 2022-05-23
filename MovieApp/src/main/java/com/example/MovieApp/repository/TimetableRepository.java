@@ -1,10 +1,7 @@
-package repository;
+package com.example.MovieApp.repository;
 
-import model.Timetable;
+import com.example.MovieApp.model.Timetable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
-import java.util.List;
 
 public interface TimetableRepository extends JpaRepository<Timetable, Long> {
 

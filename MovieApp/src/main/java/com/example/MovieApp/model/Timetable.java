@@ -1,10 +1,7 @@
-package model;
-
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+package com.example.MovieApp.model;
 
 import javax.persistence.*;
-import java.util.Set;
+
 
 @Entity
 public class Timetable {
@@ -37,6 +34,7 @@ public class Timetable {
         Monday, tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
     }
 
+    @ManyToMany(cascade = CascadeType.ALL)
 
     public Long getId() {
         return id;
