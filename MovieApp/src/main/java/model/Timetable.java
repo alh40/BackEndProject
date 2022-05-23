@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class TimetableModel {
+public class Timetable {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
@@ -14,10 +14,10 @@ public class TimetableModel {
     private int time;
 
 
-    public TimetableModel() {
+    public Timetable() {
     }
 
-    public TimetableModel(Long id, String date, int time) {
+    public Timetable(Long id, String date, int time) {
         this.id = id;
         this.date = date;
         this.time = time;
