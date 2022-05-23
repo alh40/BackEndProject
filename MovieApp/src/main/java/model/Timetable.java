@@ -1,9 +1,7 @@
 package model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Timetable {
@@ -12,7 +10,6 @@ public class Timetable {
     private Long id;
     private String date;
     private int time;
-
 
     public Timetable() {
     }
@@ -27,6 +24,7 @@ public class Timetable {
         Monday, tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
     }
 
+    @ManyToMany(cascade = CascadeType.ALL)
 
     public Long getId() {
         return id;
