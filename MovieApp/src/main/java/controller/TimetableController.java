@@ -17,12 +17,16 @@ public class TimetableController {
     @Autowired
     private TimetableRepository timetableRepository;
 
-    @GetMapping("/timetable/{movie_name}")
-    public ResponseEntity<Timetable> getByTitle(@PathVariable String movie_name){
-        Timetable = timetableRepository.f(movie_name);
+    public TimetableController(TimetableRepository timetableRepository) {
+        this.timetableRepository = timetableRepository;
+    }
+
+    @GetMapping("/timetable")
+    public ResponseEntity<List<Timetable>> getAll(){
+        List<Timetable> timetables= timetableRepository.findAll();
         return ResponseEntity
                 .ok()
-                .body(movie);
+                .body(timetables);
     }
 
     @PostMapping("/timetable")

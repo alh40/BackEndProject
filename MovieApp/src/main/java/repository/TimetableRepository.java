@@ -8,10 +8,6 @@ import java.util.List;
 
 public interface TimetableRepository extends JpaRepository<Timetable, Long> {
 
-    @Query(
-            value = "SELECT * FROM timetable WHERE  ",
-            nativeQuery = true)
-    List<Timetable>
 
 
 
