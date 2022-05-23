@@ -14,7 +14,6 @@ public class VenueController {
 
 
     @Autowired
-
     private final VenueRepository venueRepository;
 
     public VenueController(VenueRepository venueRepository) {
