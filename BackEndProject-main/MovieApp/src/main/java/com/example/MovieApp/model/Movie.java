@@ -15,7 +15,7 @@ public class Movie {
     private int rating;
     private String genre;
     private int price;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "timetable",
             joinColumns = @JoinColumn(name = "venue_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
@@ -25,7 +25,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(Long id, String title, int time_length, int rating, String genre, int price) {
+    public Movie(Long id, String title, int time_length, int rating, String genre, int price, Long venue_id) {
         this.id = id;
         this.title = title;
         this.time_length = time_length;

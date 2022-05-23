@@ -15,7 +15,7 @@ public class Venue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToMany(mappedBy = "venues")
+    @OneToMany(mappedBy = "venues")
     @JsonIgnoreProperties(value = {"venues"})
     private Set<Movie> movies;
 
