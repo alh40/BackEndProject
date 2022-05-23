@@ -27,6 +27,14 @@ public class TimetableController {
                 .body(timetables);
     }
 
+    @GetMapping("/timetable")
+    public ResponseEntity<List<Timetable>> getAllLabs() {
+        List<Timetable> timetables= timetableRepository.findAll();
+        return ResponseEntity
+                .ok()
+                .body(timetables);
+    }
+
     @PostMapping("/timetable")
     public ResponseEntity<Timetable> createStudent(@RequestBody Timetable timetable){
         Timetable timetable1 = timetableRepository.save(timetable);

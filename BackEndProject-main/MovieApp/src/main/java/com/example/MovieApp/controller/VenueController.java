@@ -26,8 +26,8 @@ public class VenueController {
                 .body(venue);
     }
 
-    @GetMapping("/venue/{id}")
-        public void deleteVenue(@PathVariable Long id){
+    @DeleteMapping("/venue/{id}")
+    public void deleteVenue(@PathVariable Long id){
         venueRepository.deleteById(id);
     }
 
