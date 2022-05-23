@@ -19,8 +19,8 @@ public class Movie {
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "movie",
-            joinColumns = { @JoinColumn(name = "movie_id") },
-            inverseJoinColumns = { @JoinColumn(name = "venue_id") }
+            joinColumns = {@JoinColumn(name = "movie_id")},
+            inverseJoinColumns = {@JoinColumn(name = "venue_id")}
     )
     @JsonIgnoreProperties(value = {"movies"})
     private Set<Venue> venues;
@@ -93,7 +93,4 @@ public class Movie {
     public void setVenues(Set<Venue> venues) {
         this.venues = venues;
     }
-=======
-public class Movie {
->>>>>>> origin/TimetableModel
 }
