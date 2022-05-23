@@ -7,25 +7,22 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "venue")
 public class Venue {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "venues")
-    @JsonIgnoreProperties(value = {"venues"})
-    private Set<Movie> movies;
+    @OneToMany(mappedBy = "venue")
+    private Set<Timetable> timetables;
 
     public Venue() {
     }
 
-    public Venue(Long id, String name, Set<Movie> movies) {
+    public Venue(Long id, String name, Set<Timetable> timetables) {
         this.id = id;
         this.name = name;
-        this.movies = movies;
+        this.timetables = timetables;
     }
 
     public Long getId() {
@@ -44,11 +41,11 @@ public class Venue {
         this.name = name;
     }
 
-    public Set<Movie> getMovies() {
-        return movies;
+    public Set<Timetable> getTimetables() {
+        return timetables;
     }
 
-    public void setMovies(Set<Movie> movies) {
-        this.movies = movies;
+    public void setTimetables(Set<Timetable> timetables) {
+        this.timetables = timetables;
     }
 }
