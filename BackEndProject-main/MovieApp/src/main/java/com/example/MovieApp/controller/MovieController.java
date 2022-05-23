@@ -6,6 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.MovieApp.repository.MovieRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @RestController
 public class MovieController {
@@ -25,6 +28,10 @@ public class MovieController {
                 .ok()
                 .body(movie1);
     }
+    @GetMapping("/movies/{id}")
+        public Optional<Movie> getMovieById(@PathVariable Long id){
+            return movieRepository.findById(id);
+        }
 
     @PostMapping("/movies")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie movie){
