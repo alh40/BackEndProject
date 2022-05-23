@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import repository.MovieRepository;
 
-import static jdk.javadoc.internal.doclets.formats.html.markup.HtmlStyle.title;
 
 @RestController
 public class MovieController {
