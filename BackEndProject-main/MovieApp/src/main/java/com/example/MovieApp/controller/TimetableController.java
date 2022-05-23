@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class TimetableController {
 
@@ -17,9 +19,9 @@ public class TimetableController {
         this.timetableRepository = timetableRepository;
     }
 
-    @GetMapping("/timetable/{dates}")
-    public ResponseEntity<Timetable> getAll(@PathVariable String dates ){
-        Timetable timetables= timetableRepository.findByDate(dates);
+    @GetMapping("/timetable/{date}")
+    public ResponseEntity<List<Timetable>> getAll(@PathVariable String date){
+        List<Timetable> timetables= timetableRepository.findAllByDate(date);
         return ResponseEntity
                 .ok()
                 .body(timetables);
