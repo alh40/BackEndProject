@@ -2,6 +2,7 @@ package model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "venue")
@@ -10,13 +11,13 @@ public class Venue {
 
     @Id
     @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
+            name = "venue_sequence",
+            sequenceName = "venue_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
+            generator = "venue_sequence"
 
     )
     @Column(
@@ -33,9 +34,22 @@ public class Venue {
     )
     private String name;
 
+    @ManyToMany(mappedBy = "venue")
+    private List<Timetable> timetableList;
+
+    @ManyToMany(mappedBy = "venue")
+    private List<Movie> movieList;
+
+
+
     public Venue() {
     }
 
+    public Venue(String name, List<Timetable> timetableList, List<Movie> movieList) {
+        this.name = name;
+        this.timetableList = timetableList;
+        this.movieList = movieList;
+    }
 
     public Long getId() {
         return id;
@@ -53,11 +67,19 @@ public class Venue {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Venue{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public List<Timetable> getTimetableList() {
+        return timetableList;
+    }
+
+    public void setTimetableList(List<Timetable> timetableList) {
+        this.timetableList = timetableList;
+    }
+
+    public List<Movie> getMovieList() {
+        return movieList;
+    }
+
+    public void setMovieList(List<Movie> movieList) {
+        this.movieList = movieList;
     }
 }
