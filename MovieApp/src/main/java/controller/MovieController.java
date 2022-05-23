@@ -2,9 +2,7 @@ package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import repository.MovieRepository;
 
 @RestController
@@ -24,6 +22,19 @@ public class MovieController {
         return ResponseEntity
                 .ok()
                 .body(movie1);
+    }
+
+    @PostMapping("/movies")
+    public ResponseEntity<Movie> createMovie(@RequestBody Movie movie){
+        Movie createdMovie = movieRepository.save(movie);
+        return ResponseEntity
+                .ok()
+                .body(createdMovie);
+    }
+
+    @DeleteMapping("/movies/{id}")
+    public void deleteMovie(@PathVariable Long id){
+        Movie deleteMovie = movieRepository.deleteById(id);
     }
 
 
