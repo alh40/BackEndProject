@@ -16,6 +16,10 @@ class TimetableKey implements Serializable  {
         this.movieId = movieid;
     }
 
+    public TimetableKey() {
+
+    }
+
     public Long getVenueId() {
         return venueId;
     }
