@@ -15,23 +15,20 @@ public class Movie {
     private int rating;
     private String genre;
     private int price;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "timetable",
-            joinColumns = @JoinColumn(name = "venue_id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id"))
-    @JsonIgnoreProperties(value = {"movies"})
-    private Set<Venue> venues;
+    @OneToMany(mappedBy = "movie")
+    private Set<Timetable> timetables;
 
     public Movie() {
     }
 
-    public Movie(Long id, String title, int time_length, int rating, String genre, int price) {
+    public Movie(Long id, String title, int time_length, int rating, String genre, int price, Set<Timetable> timetables) {
         this.id = id;
         this.title = title;
         this.time_length = time_length;
         this.rating = rating;
         this.genre = genre;
         this.price = price;
+        this.timetables = timetables;
     }
 
     public Long getId() {
@@ -80,5 +77,13 @@ public class Movie {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public Set<Timetable> getTimetables() {
+        return timetables;
+    }
+
+    public void setTimetables(Set<Timetable> timetables) {
+        this.timetables = timetables;
     }
 }
