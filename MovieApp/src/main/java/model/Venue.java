@@ -31,8 +31,6 @@ public class Venue {
     @ManyToMany(mappedBy = "venue")
     private List<Movie> movieList;
 
-
-
     public Venue() {
     }
 
