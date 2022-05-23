@@ -1,10 +1,13 @@
 package com.example.MovieApp.controller;
 
 import com.example.MovieApp.model.Movie;
+import com.example.MovieApp.model.Timetable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.MovieApp.repository.MovieRepository;
+
+import java.util.List;
 
 
 @RestController
@@ -24,6 +27,14 @@ public class MovieController {
         return ResponseEntity
                 .ok()
                 .body(movie1);
+    }
+
+    @GetMapping("/movies")
+    public ResponseEntity<List<Movie>> getAll() {
+        List<Movie> movies= movieRepository.findAll();
+        return ResponseEntity
+                .ok()
+                .body(movies);
     }
 
     @PostMapping("/movies")
