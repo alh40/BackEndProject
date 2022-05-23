@@ -22,8 +22,8 @@ public class TimetableController {
     }
 
     @GetMapping("/timetable")
-    public ResponseEntity<List<Timetable>> getAll(){
-        List<Timetable> timetables= timetableRepository.findAll();
+    public ResponseEntity<List<Timetable>> getAll(@PathVariable String date){
+        List<Timetable> timetables= timetableRepository.findByDate(date);
         return ResponseEntity
                 .ok()
                 .body(timetables);
