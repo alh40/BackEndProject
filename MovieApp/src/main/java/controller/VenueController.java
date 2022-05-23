@@ -5,6 +5,7 @@ import model.Venue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import repository.VenueRepository;
 
 import java.util.List;
 
@@ -14,10 +15,10 @@ public class VenueController {
 
     @Autowired
 
-    private final VenueController venueController;
+    private final VenueRepository venueRepository;
 
-    public VenueController(VenueController venueController) {
-        this.venueController = venueController;
+    public VenueController(VenueRepository venueRepository) {
+        this.venueRepository = venueRepository;
     }
 
     @GetMapping("/venue/{name}")
