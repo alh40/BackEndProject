@@ -1,10 +1,10 @@
-package controller;
+package com.example.MovieApp.controller;
 
-import model.Movie;
+import com.example.MovieApp.model.Movie;
+import com.example.MovieApp.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import repository.MovieRepository;
 
 
 @RestController

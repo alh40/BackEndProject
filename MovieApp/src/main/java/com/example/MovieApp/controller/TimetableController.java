@@ -1,15 +1,11 @@
-package controller;
+package com.example.MovieApp.controller;
 
 
-import model.Movie;
-import model.Timetable;
+import com.example.MovieApp.model.Timetable;
+import com.example.MovieApp.repository.TimetableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import repository.TimetableRepository;
-
-import java.sql.Time;
-import java.util.List;
 
 @RestController
 public class TimetableController {
