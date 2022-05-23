@@ -1,5 +1,6 @@
 package controller;
 
+import model.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,8 @@ public class MovieController {
     }
 
     @GetMapping("/movies/{title}")
-    public ResponseEntity<Movie> getByTitle(@PathVariable String movieTitle){
-        Movie movie1 = movieRepository.findbyTitle(title);
+    public ResponseEntity<Movie> getByTitle(@PathVariable String title){
+        Movie movie1 = movieRepository.findByTitle(title);
         return ResponseEntity
                 .ok()
                 .body(movie1);
@@ -34,7 +35,7 @@ public class MovieController {
 
     @DeleteMapping("/movies/{id}")
     public void deleteMovie(@PathVariable Long id){
-        Movie deleteMovie = movieRepository.deleteById(id);
+        movieRepository.deleteById(id);
     }
 
 
