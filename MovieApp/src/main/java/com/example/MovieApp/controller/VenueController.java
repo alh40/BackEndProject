@@ -1,13 +1,10 @@
-package controller;
+package com.example.MovieApp.controller;
 
-import model.Movie;
-import model.Venue;
+import com.example.MovieApp.model.Venue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import repository.VenueRepository;
-
-import java.util.List;
+import com.example.MovieApp.repository.VenueRepository;
 
 @RestController
 public class VenueController {
