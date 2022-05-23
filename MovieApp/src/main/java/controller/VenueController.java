@@ -15,15 +15,15 @@ public class VenueController {
 
     @Autowired
 
-    private final VenueController venueController;
+    private final VenueRepository venueRepository;
 
-    public VenueController(VenueController venueController) {
-        this.venueController = venueController;
+    public VenueController(VenueRepository venueRepository) {
+        this.venueRepository = venueRepository;
     }
 
     @GetMapping("/venue/{name}")
     public ResponseEntity<Venue> getName(@PathVariable String name) {
-        Venue venue = VenueRepository.findByName(name);
+        Venue venue = venueRepository.findByName(name);
         return ResponseEntity
                 .ok()
                 .body(venue);
@@ -31,7 +31,7 @@ public class VenueController {
 
     @GetMapping("/venue/{id}")
         public void deleteVenue(@PathVariable Long id){
-        VenueRepository.deleteById(id);
+        venueRepository.deleteById(id);
     }
 
 
