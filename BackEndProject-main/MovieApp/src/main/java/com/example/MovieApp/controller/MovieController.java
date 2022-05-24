@@ -12,9 +12,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @RestController
@@ -36,17 +34,32 @@ public class MovieController {
         }
     }
 
+    public static ArrayList<Integer> setUniqueId() {
+        LinkedHashSet<Integer> uniqueIdSet = new LinkedHashSet<>();
+        Random uniqueId = new Random();
+
+        while (uniqueIdSet.size() < 1000) {
+            uniqueIdSet.add(uniqueId.nextInt(1000 - 0 + 1));
+        }
+        ArrayList<Integer> uniqueIdList = new ArrayList<>();
+        uniqueIdList.addAll(uniqueIdSet);
+        return uniqueIdList;
+    }
+
+    public static ArrayList<Integer> uniqueId() {
+        ArrayList<Integer> userIdList = setUniqueId();
+        return userIdList;
+    }
+
+    public static ArrayList<Integer> uniqueIdUser = uniqueId();
     public static List<Timetable> timetable = new ArrayList<>();
-
     public static List<Movie> movieBooking = new ArrayList<>();
-
     public static ArrayList<Timetable> newBooking = new ArrayList<>();
-
     public static List<String> newList = new ArrayList<>();
 
 
-    @GetMapping(value = "/booking/{title}/{date}/{time}", produces = {"application/json"})
-    public void bookMovie (@PathVariable String title, @PathVariable String time, @PathVariable String date) throws IOException {
+    @GetMapping(value = "/booking/{title}/{date}/{time}/{user}", produces = {"application/json"})
+    public void bookMovie (@PathVariable String title, @PathVariable String time, @PathVariable String date, @PathVariable String user) throws IOException {
 
         Movie movie1 = movieRepository.findByTitle(title);
         Set<Timetable> set = movie1.getTimetables();
@@ -56,7 +69,7 @@ public class MovieController {
         for(int i = 0; i < timetable.size(); i++){
             if(timetable.get(i).getTime().equals(time) && timetable.get(i).getDate().equals(date)){
                 newBooking.add(timetable.get(i));
-                newList.add(movie1.toString() + "" + timetable.get(i).toString());
+                newList.add(user + "" + movie1.toString() + "" + timetable.get(i).toString());
             }
         }
         newBooking.remove(0);
