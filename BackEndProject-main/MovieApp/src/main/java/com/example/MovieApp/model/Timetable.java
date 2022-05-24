@@ -79,10 +79,10 @@ public class Timetable {
 
     @Override
     public String toString() {
-        return "Timetable{" +
-                "id=" + id +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
+        return "Timetable { " +
+                "Timetable ID = " + id +
+                ", Day = '" + date + '\'' +
+                ", Time = '" + time + '\'' +
                 '}';
     }
 }
