@@ -28,6 +28,14 @@ class TimetableRepositoryTest {
 
 
 
+    //find all
+    @Test
+    void testAll(){
+        List<Timetable> timetables= timetableRepository.findAll();
+        assertEquals(100, timetables.size());
+    }
+
+
     // find all by date
     @Test
     void testFindAllByDate(){
@@ -57,9 +65,6 @@ class TimetableRepositoryTest {
         Movie movie1 = movieRepository.findByTitle(movieName);
         List<Timetable> movieNameTimetable = timetableRepository.findTimetableByMovie(movie1);
         assertEquals(movieName, movieNameTimetable.get(0).getMovie().getTitle());
-
-
-
     }
 
 

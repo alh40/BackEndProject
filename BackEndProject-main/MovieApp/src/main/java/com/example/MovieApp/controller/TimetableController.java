@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sound.midi.Soundbank;
 import java.util.List;
 
 @RestController
@@ -49,17 +50,18 @@ public class TimetableController {
     }
 
     //get all by venue
-    @GetMapping("/timetable/{venueName}")
+    @GetMapping("/timetable/venue/{venueName}")
     public ResponseEntity<List<Timetable>> getTimetableByVenueName(@PathVariable String venueName){
-        Venue venue1 = venueRepository.findByName(venueName);
-        List<Timetable> timetables= timetableRepository.findTimetableByVenue(venue1);
-        return ResponseEntity
-                .ok()
-                .body(timetables);
+            Venue venue1 = venueRepository.findByName(venueName);
+            List<Timetable> timetables= timetableRepository.findTimetableByVenue(venue1);
+            return ResponseEntity
+                    .ok()
+                    .body(timetables);
+
     }
 
     //get all by movie
-    @GetMapping("/timetable/{movieName}")
+    @GetMapping("/timetable/movie/{movieName}")
     public ResponseEntity<List<Timetable>> getTimetableByMovieName(@PathVariable String movieName){
         Movie movie1 = movieRepository.findByTitle(movieName);
         List<Timetable> timetables= timetableRepository.findTimetableByMovie(movie1);
