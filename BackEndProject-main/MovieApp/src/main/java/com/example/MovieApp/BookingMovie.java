@@ -29,17 +29,30 @@ public class BookingMovie {
         writeBookings.close();
     }
 
-    public static void readFile() throws FileNotFoundException {
+    public static void deleteLineBasedOnId() throws FileNotFoundException{
 
-
-        File bookings = new File("/Users/Alex/Documents/MovieBookings.txt");
-
-        Scanner scanner = new Scanner(bookings);
-
-        while(scanner.hasNextLine()){
-
-            System.out.println(scanner.nextLine());
-        }
     }
+
+    public static void readFile() throws IOException {
+
+
+        File bookingsInput = new File("/Users/Alex/Documents/MovieBookings.txt");
+        File bookingsOutput = new File("/Users/Alex/Documents/DeletingBookings.txt");
+
+        BufferedReader inputReader = new BufferedReader(new FileReader(bookingsInput));
+        BufferedWriter inputWriter = new BufferedWriter(new FileWriter(bookingsOutput));
+
+        String removeBooking = "";
+        String currentLine;
+
+        while((currentLine = inputReader.readLine()) != null){
+            String trimmedLine = currentLine.trim();
+            if(trimmedLine.equals(removeBooking)) continue;
+            inputWriter.write(currentLine + System.getProperty("line.seperator"));
+            }
+        inputWriter.close();
+        inputReader.close();
+        boolean succesful = bookingsOutput.renameTo(bookingsInput);
+        }
 
 }

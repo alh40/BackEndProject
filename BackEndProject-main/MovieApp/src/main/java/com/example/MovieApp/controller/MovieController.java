@@ -10,11 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.MovieApp.repository.MovieRepository;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Time;
 import java.util.*;
+import java.util.stream.Stream;
 
 
 @RestController
@@ -59,7 +60,6 @@ public class MovieController {
     public static ArrayList<Timetable> newBooking = new ArrayList<>();
     public static List<String> newList = new ArrayList<>();
 
-    public static HashMap<Integer, String> userBookings = new HashMap<>();
 
     @GetMapping(value = "/booking/{title}/{date}/{time}/{user}", produces = {"application/json"})
     public void bookMovie (@PathVariable String title, @PathVariable String time, @PathVariable String date, @PathVariable String user) throws IOException {
@@ -71,16 +71,31 @@ public class MovieController {
         for(int i = 0; i < timetable.size(); i++){
             if(timetable.get(i).getTime().equals(time) && timetable.get(i).getDate().equals(date)){
                 newBooking.add(timetable.get(i));
-                newList.add("User: " + user + " UniqueID: " + uniqueId.get(0) + ": " + "\n" + movie1.toString() + " " + "\n" + timetable.get(i).toString() + " " + "\n" + timetable.get(i).getVenue());
-                userBookings.put(uniqueId.get(0), "User: " + movie1.toString() + " " + "\n" + timetable.get(i).toString() + " " + "\n" + timetable.get(i).getVenue());
+                newList.add("User: " + user + " UniqueID: " + uniqueId.get(0) + ", " + "\n" + movie1.toString() + " " + "\n" + timetable.get(i).toString() + " " + "\n" + timetable.get(i).getVenue());
             }
         }
         uniqueId.remove(0);
         newBooking.remove(0);
         writeToFile();
+        System.out.println(newList);
 
-        System.out.println(userBookings);
 
+    }
+
+    @DeleteMapping("/booking/{id}")
+    public void deleteMovieBookingByUniqueId(@PathVariable Long id) throws IOException {
+        String inputStr = String.valueOf(id);
+
+        for(int i = 0; i < newList.size(); i++){
+            if(newList.get(i).contains(inputStr)){
+                String removeBooking = newList.get(i);
+                newList.remove(i);
+            }
+        }
+        File deleteFile = new File("/Users/Alex/Documents/MovieBookings.txt");
+        deleteFile.delete();
+        writeToFile();
+        System.out.println(newList);
     }
 
     @GetMapping("/movies/{title}")
