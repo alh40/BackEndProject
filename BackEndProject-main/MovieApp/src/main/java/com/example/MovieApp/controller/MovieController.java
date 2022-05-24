@@ -29,6 +29,14 @@ public class MovieController {
                 .body(movie1);
     }
 
+    @GetMapping("/movies")
+    public ResponseEntity<List<Movie>> getAll() {
+        List<Movie> students= movieRepository.findAll();
+        return ResponseEntity
+                .ok()
+                .body(students);
+    }
+
     @GetMapping("/movies/searchName")
     public ResponseEntity<List<Movie>> searchName(
             @RequestParam String input){
