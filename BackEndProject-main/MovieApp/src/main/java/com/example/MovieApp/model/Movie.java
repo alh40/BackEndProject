@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 @Entity
 public class Movie {
@@ -21,6 +22,7 @@ public class Movie {
     @JsonManagedReference
     private Set<Timetable> timetables;
 
+
     public Movie() {
     }
 
@@ -32,6 +34,7 @@ public class Movie {
         this.genre = genre;
         this.price = price;
         this.timetables = timetables;
+
     }
 
     public Long getId() {
