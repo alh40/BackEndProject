@@ -48,4 +48,5 @@ public class Venue {
     public void setTimetables(Set<Timetable> timetables) {
         this.timetables = timetables;
     }
+
 }

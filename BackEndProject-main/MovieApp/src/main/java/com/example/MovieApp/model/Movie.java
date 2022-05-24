@@ -88,4 +88,16 @@ public class Movie {
     public void setTimetables(Set<Timetable> timetables) {
         this.timetables = timetables;
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", time_length=" + time_length +
+                ", rating=" + rating +
+                ", genre='" + genre + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
