@@ -1,5 +1,6 @@
 package com.example.MovieApp;
 
+import com.example.MovieApp.controller.MovieController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
