@@ -19,6 +19,7 @@ public class Movie {
     @OneToMany(mappedBy = "movie")
     @JsonManagedReference
     private Set<Timetable> timetables;
+
     public Movie() {
     }
 
