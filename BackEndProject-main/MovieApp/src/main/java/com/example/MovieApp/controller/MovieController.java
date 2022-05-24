@@ -18,7 +18,7 @@ public class MovieController {
         this.movieRepository = movieRepository;
     }
 
-    @GetMapping("/movies/{title}")
+    @GetMapping("/movie/{title}")
     public ResponseEntity<Movie> getByTitle(@PathVariable String title){
         Movie movie1 = movieRepository.findByTitle(title);
         return ResponseEntity
@@ -26,7 +26,7 @@ public class MovieController {
                 .body(movie1);
     }
 
-    @PostMapping("/movies")
+    @PostMapping("/movie")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie movie){
         Movie createdMovie = movieRepository.save(movie);
         return ResponseEntity

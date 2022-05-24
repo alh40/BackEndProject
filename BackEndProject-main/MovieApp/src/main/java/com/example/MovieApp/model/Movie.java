@@ -18,6 +18,7 @@ public class Movie {
     @OneToMany(mappedBy = "movie")
     private Set<Timetable> timetables;
 
+    @JsonIgnoreProperties(value = {"movie"})
     public Movie() {
     }
 

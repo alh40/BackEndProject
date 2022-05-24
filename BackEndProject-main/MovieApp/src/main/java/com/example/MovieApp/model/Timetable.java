@@ -1,5 +1,7 @@
 package com.example.MovieApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -22,6 +24,7 @@ public class Timetable {
     private String date;
     private String time;
 
+    @JsonIgnoreProperties(value = {"timetable"})
     public Timetable() {
     }
 

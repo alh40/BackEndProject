@@ -16,6 +16,7 @@ public class Venue {
     @OneToMany(mappedBy = "venue")
     private Set<Timetable> timetables;
 
+    @JsonIgnoreProperties(value = {"venue"})
     public Venue() {
     }
 
