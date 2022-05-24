@@ -92,13 +92,10 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie { " +
-                "Movie id = " + id +
-                ", Movie Title = '" + title + '\'' +
+        return "Movie: " + title + '\'' +
                 ", " + time_length + " minutes" +
                 ", Movie Rating = " + rating +
                 ", Movie Genre = '" + genre + '\'' +
-                ", Price (£) = " + price +
-                '}';
+                ", Ticket Price  = £" + price;
     }
 }

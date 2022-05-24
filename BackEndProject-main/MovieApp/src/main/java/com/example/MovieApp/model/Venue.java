@@ -53,9 +53,7 @@ public class Venue {
 
     @Override
     public String toString() {
-        return "Venue { " +
-                "Venue ID = " + id +
-                ", Venue name ='" + name + '\'' +
-                '}';
+        return "Venue: " + name + '\''
+                ;
     }
 }
