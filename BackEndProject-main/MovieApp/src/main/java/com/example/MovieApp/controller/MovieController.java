@@ -100,7 +100,7 @@ public class MovieController {
     }
 
     @GetMapping("/rating/{rating}")
-    public ResponseEntity<List<Movie>> getMovieByRating(@PathVariable Integer rating){
+    public ResponseEntity<List<Movie>> getMovieByRating(@PathVariable int rating){
         List<Movie> movieWithRating = movieRepository.getMovieByRating(rating);
         return ResponseEntity.ok().body(movieWithRating);
     }
