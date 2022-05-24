@@ -13,7 +13,8 @@ public class Venue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "venue")
+    @OneToMany(mappedBy = "venue",
+    cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Set<Timetable> timetables;
 
     public Venue() {

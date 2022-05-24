@@ -39,5 +39,4 @@ public class MovieController {
         movieRepository.deleteById(id);
     }
 
-
 }

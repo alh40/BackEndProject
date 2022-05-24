@@ -15,7 +15,8 @@ public class Movie {
     private int rating;
     private String genre;
     private int price;
-    @OneToMany(mappedBy = "movie")
+    @OneToMany(mappedBy = "movie",
+    cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Set<Timetable> timetables;
 
     public Movie() {
