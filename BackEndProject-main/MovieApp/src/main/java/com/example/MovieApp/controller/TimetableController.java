@@ -28,7 +28,7 @@ public class TimetableController {
     }
 
     @GetMapping("/timetable")
-    public ResponseEntity<List<Timetable>> getAllLabs() {
+    public ResponseEntity<List<Timetable>> getAll() {
         List<Timetable> timetables= timetableRepository.findAll();
         return ResponseEntity
                 .ok()
@@ -41,6 +41,11 @@ public class TimetableController {
         return ResponseEntity
                 .ok()
                 .body(timetable1);
+    }
+
+    @DeleteMapping("/timetable/{id}")
+    public void deleteVenue(@PathVariable Long id){
+        timetableRepository.deleteById(id);
     }
 
 

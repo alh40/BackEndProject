@@ -2,6 +2,7 @@ package com.example.MovieApp.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,6 +15,7 @@ public class Venue {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "venue")
+    @JsonManagedReference
     private Set<Timetable> timetables;
 
     @JsonIgnoreProperties(value = {"venue"})
