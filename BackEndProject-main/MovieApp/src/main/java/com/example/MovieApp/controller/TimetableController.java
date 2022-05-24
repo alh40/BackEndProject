@@ -15,32 +15,23 @@ public class TimetableController {
     @Autowired
     private TimetableRepository timetableRepository;
 
-    public TimetableController(TimetableRepository timetableRepository) {
-        this.timetableRepository = timetableRepository;
-    }
 
     @GetMapping("/timetable/{date}")
-    public ResponseEntity<List<Timetable>> getAll(@PathVariable String date){
+    public List<Timetable> getAll(@PathVariable String date){
         List<Timetable> timetables= timetableRepository.findAllByDate(date);
-        return ResponseEntity
-                .ok()
-                .body(timetables);
+        return timetables;
     }
 
     @GetMapping("/timetable")
-    public ResponseEntity<List<Timetable>> getAllLabs() {
+    public List<Timetable> getAllLabs() {
         List<Timetable> timetables= timetableRepository.findAll();
-        return ResponseEntity
-                .ok()
-                .body(timetables);
+        return timetables;
     }
 
     @PostMapping("/timetable")
-    public ResponseEntity<Timetable> createStudent(@RequestBody Timetable timetable){
+    public Timetable createStudent(@RequestBody Timetable timetable){
         Timetable timetable1 = timetableRepository.save(timetable);
-        return ResponseEntity
-                .ok()
-                .body(timetable1);
+        return timetable1;
     }
 
 
