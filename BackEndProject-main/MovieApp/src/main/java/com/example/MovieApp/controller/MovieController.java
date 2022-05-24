@@ -3,6 +3,7 @@ package com.example.MovieApp.controller;
 import com.example.MovieApp.BookingMovie;
 import com.example.MovieApp.model.Movie;
 import com.example.MovieApp.model.Timetable;
+import org.hibernate.persister.entity.SingleTableEntityPersister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -60,7 +61,7 @@ public class MovieController {
 
     @GetMapping(value = "/booking/{title}/{date}/{time}/{user}", produces = {"application/json"})
     public void bookMovie (@PathVariable String title, @PathVariable String time, @PathVariable String date, @PathVariable String user) throws IOException {
-
+        ArrayList<Integer> uniqueId = uniqueIdUser;
         Movie movie1 = movieRepository.findByTitle(title);
         Set<Timetable> set = movie1.getTimetables();
         timetable.addAll(set);
@@ -69,9 +70,10 @@ public class MovieController {
         for(int i = 0; i < timetable.size(); i++){
             if(timetable.get(i).getTime().equals(time) && timetable.get(i).getDate().equals(date)){
                 newBooking.add(timetable.get(i));
-                newList.add(user + "" + movie1.toString() + "" + timetable.get(i).toString());
+                newList.add("User: " + user + " UniqueID: " + uniqueId.get(0) + ": " + movie1.toString() + " " + timetable.get(i).toString());
             }
         }
+        uniqueId.remove(0);
         newBooking.remove(0);
         writeToFile();
 
