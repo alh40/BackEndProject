@@ -50,4 +50,12 @@ public class Venue {
     public void setTimetables(Set<Timetable> timetables) {
         this.timetables = timetables;
     }
+
+    @Override
+    public String toString() {
+        return "Venue{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
