@@ -99,6 +99,12 @@ public class MovieController {
         return new ResponseEntity<>(movieRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/rating/{rating}")
+    public ResponseEntity<List<Movie>> getMovieByRating(@PathVariable Integer rating){
+        List<Movie> movieWithRating = movieRepository.getMovieByRating(rating);
+        return ResponseEntity.ok().body(movieWithRating);
+    }
+
     @PostMapping("/movies")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie movie){
         Movie createdMovie = movieRepository.save(movie);
