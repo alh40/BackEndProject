@@ -59,6 +59,7 @@ public class MovieController {
     public static List<String> newList = new ArrayList<>();
 
 
+
     @GetMapping(value = "/booking/{title}/{date}/{time}/{user}", produces = {"application/json"})
     public void bookMovie (@PathVariable String title, @PathVariable String time, @PathVariable String date, @PathVariable String user) throws IOException {
         ArrayList<Integer> uniqueId = uniqueIdUser;
@@ -66,11 +67,10 @@ public class MovieController {
         Set<Timetable> set = movie1.getTimetables();
         timetable.addAll(set);
 
-
         for(int i = 0; i < timetable.size(); i++){
             if(timetable.get(i).getTime().equals(time) && timetable.get(i).getDate().equals(date)){
                 newBooking.add(timetable.get(i));
-                newList.add("User: " + user + " UniqueID: " + uniqueId.get(0) + ": " + movie1.toString() + " " + timetable.get(i).toString());
+                newList.add("User: " + user + " UniqueID: " + uniqueId.get(0) + ": " + "\n" + movie1.toString() + " " + "\n" + timetable.get(i).toString() + " " + "\n" + timetable.get(i).getVenue());
             }
         }
         uniqueId.remove(0);
