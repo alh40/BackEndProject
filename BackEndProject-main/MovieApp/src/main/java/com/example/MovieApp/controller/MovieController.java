@@ -4,6 +4,7 @@ import com.example.MovieApp.BookingMovie;
 import com.example.MovieApp.model.Movie;
 import com.example.MovieApp.model.Timetable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.MovieApp.repository.MovieRepository;
@@ -70,6 +71,17 @@ public class MovieController {
         return ResponseEntity
                 .ok()
                 .body(movie1);
+    }
+
+    @GetMapping("/fuzzysearch/{searchName}")
+    public ResponseEntity<List<Movie>> searchName(
+            @PathVariable String searchName){
+        if(searchName != null){
+            return new ResponseEntity<List<Movie>>(
+                    movieRepository.findByTitleLike(searchName),
+                    HttpStatus.OK);
+        }
+        return new ResponseEntity<>(movieRepository.findAll(), HttpStatus.OK);
     }
 
     @PostMapping("/movies")
