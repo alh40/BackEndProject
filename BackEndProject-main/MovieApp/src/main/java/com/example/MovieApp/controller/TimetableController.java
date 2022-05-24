@@ -49,16 +49,7 @@ public class TimetableController {
                 .body(timetables);
     }
 
-    //get all by venue
-//    @GetMapping("/timetable/venue/{venueName}")
-//    public ResponseEntity<List<Timetable>> getTimetableByVenueName(@PathVariable String venueName){
-//            Venue venue1 = venueRepository.findByName(venueName);
-//            List<Timetable> timetables= timetableRepository.findTimetableByVenue(venue1);
-//            return ResponseEntity
-//                    .ok()
-//                    .body(timetables);
-//
-//    }
+
     @GetMapping("/timetable/venue/{venueName}")
     public ResponseEntity<List<Timetable>> getTimetableByVenueName(@PathVariable String venueName){
         Venue venue1 = venueRepository.findByName(venueName);
@@ -78,11 +69,6 @@ public class TimetableController {
                 .ok()
                 .body(timetables);
     }
-
-
-
-
-
 
     @PostMapping("/timetable")
     public ResponseEntity<Timetable> createStudent(@RequestBody Timetable timetable){
