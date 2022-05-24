@@ -19,6 +19,6 @@ public class test_movie_searchName {
     @Test
     public void canFindName(){
         List<Movie> found = movieRepository.findByTitleLike("of");
-        assertThat(found.size()).isEqualTo(144);
+        assertThat(found.size()).isEqualTo(8);
     }
 }
