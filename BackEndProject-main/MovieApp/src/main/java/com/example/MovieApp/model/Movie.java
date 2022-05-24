@@ -21,7 +21,6 @@ public class Movie {
     @JsonManagedReference
     private Set<Timetable> timetables;
 
-    @JsonIgnoreProperties(value = {"movie"})
     public Movie() {
     }
 

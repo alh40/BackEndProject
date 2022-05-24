@@ -18,7 +18,6 @@ public class Venue {
     @JsonManagedReference
     private Set<Timetable> timetables;
 
-    @JsonIgnoreProperties(value = {"venue"})
     public Venue() {
     }
 
