@@ -17,6 +17,8 @@ import java.sql.Time;
 import java.util.*;
 import java.util.stream.Stream;
 
+import static com.example.MovieApp.BookingMovie.readFile;
+
 
 @RestController
 public class MovieController {
@@ -77,7 +79,7 @@ public class MovieController {
         uniqueId.remove(0);
         newBooking.remove(0);
         writeToFile();
-        System.out.println(newList);
+        readFile();
 
 
     }
@@ -88,14 +90,13 @@ public class MovieController {
 
         for(int i = 0; i < newList.size(); i++){
             if(newList.get(i).contains(inputStr)){
-                String removeBooking = newList.get(i);
                 newList.remove(i);
             }
         }
         File deleteFile = new File("/Users/Alex/Documents/MovieBookings.txt");
         deleteFile.delete();
         writeToFile();
-        System.out.println(newList);
+        readFile();
     }
 
     @GetMapping("/movies/{title}")
