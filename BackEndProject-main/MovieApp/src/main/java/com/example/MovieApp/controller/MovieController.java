@@ -2,9 +2,12 @@ package com.example.MovieApp.controller;
 
 import com.example.MovieApp.model.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.MovieApp.repository.MovieRepository;
+
+import java.util.List;
 
 
 @RestController
@@ -25,6 +28,25 @@ public class MovieController {
                 .ok()
                 .body(movie1);
     }
+
+    @GetMapping("/movies/searchName")
+    public ResponseEntity<List<Movie>> searchName(
+            @RequestParam String input){
+        if(input != null){
+            return new ResponseEntity<List<Movie>>(
+                    movieRepository.findByFirstNameLike(input),
+                    HttpStatus.OK);
+        }
+        return new ResponseEntity<>(movieRepository.findAll(), HttpStatus.OK);
+    }
+
+
+//    @GetMapping("/rating/{rating}")
+//    public ResponseEntity<List<Movie>> getMovieByRating(@PathVariable Integer rating){
+//        return new ResponseEntity<List<Movie>>((List<Movie>) movieRepository.getMovieByRating(rating),HttpStatus.OK);
+//    }
+
+
 
     @PostMapping("/movies")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie movie){
