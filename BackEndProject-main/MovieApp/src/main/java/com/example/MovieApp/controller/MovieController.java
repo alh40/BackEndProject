@@ -59,14 +59,9 @@ public class MovieController {
                 newList.add(movie1.toString() + "" + timetable.get(i).toString());
             }
         }
-
-
         newBooking.remove(0);
-
         writeToFile();
 
-
-//        return movie1.toString() + newBooking.get(0).toString();
     }
 
     @GetMapping("/movies/{title}")
