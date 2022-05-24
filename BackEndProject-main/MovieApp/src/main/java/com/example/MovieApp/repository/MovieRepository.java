@@ -15,6 +15,6 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> findByTitleLike(@Param("searchName") String title);
 
     @Query(value = "SELECT * FROM MOVIE WHERE RATING = rating", nativeQuery = true)
-    List<Movie> getMovieByRating(@Param("rating") int rating);
+    List<Movie> getMovieByRating(@Param("rating") Long rating);
 
 }
