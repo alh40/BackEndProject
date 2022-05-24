@@ -37,24 +37,16 @@ public class MovieController {
                 .body(students);
     }
 
-    @GetMapping("/movies/searchName")
+    @GetMapping("/searchMovieName/{searchName}")
     public ResponseEntity<List<Movie>> searchName(
-            @RequestParam String input){
-        if(input != null){
+            @PathVariable String searchName){
+        if(searchName != null){
             return new ResponseEntity<List<Movie>>(
-                    movieRepository.findByFirstNameLike(input),
+                    movieRepository.findByTitleLike(searchName),
                     HttpStatus.OK);
         }
         return new ResponseEntity<>(movieRepository.findAll(), HttpStatus.OK);
     }
-
-
-//    @GetMapping("/rating/{rating}")
-//    public ResponseEntity<List<Movie>> getMovieByRating(@PathVariable Integer rating){
-//        List<Movie> movieWithRating = (List<Movie>) movieRepository.getMovieByRating(rating);
-//        return ResponseEntity.ok().body(movieWithRating);
-//    }
-
 
 
     @PostMapping("/movies")
