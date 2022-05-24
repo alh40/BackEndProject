@@ -19,12 +19,19 @@ public class MovieController {
     }
 
     @GetMapping("/movies/{title}")
-    public ResponseEntity<Movie> getByTitle(@PathVariable String title){
-        Movie movie1 = movieRepository.findByTitle(title);
-        return ResponseEntity
-                .ok()
-                .body(movie1);
+    public Movie getMovieByTitle(@PathVariable String title){
+        Movie movie_title = movieRepository.findByTitle(title);
+        return movie_title;
     }
+
+
+//    @GetMapping("/movies/{title}")
+//    public ResponseEntity<Movie> getByTitle(@PathVariable String title){
+//        Movie movie1 = movieRepository.findByTitle(title);
+//        return ResponseEntity
+//                .ok()
+//                .body(movie1);
+//    }
 
     @PostMapping("/movies")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie movie){

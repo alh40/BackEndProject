@@ -1,5 +1,7 @@
 package com.example.MovieApp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -13,10 +15,12 @@ public class Timetable {
 
     @ManyToOne
     @JoinColumn(name = "venue_id")
+    @JsonBackReference
     private Venue venue;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
+    @JsonBackReference
     private Movie movie;
 
     private String date;
