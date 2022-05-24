@@ -50,13 +50,22 @@ public class TimetableController {
     }
 
     //get all by venue
+//    @GetMapping("/timetable/venue/{venueName}")
+//    public ResponseEntity<List<Timetable>> getTimetableByVenueName(@PathVariable String venueName){
+//            Venue venue1 = venueRepository.findByName(venueName);
+//            List<Timetable> timetables= timetableRepository.findTimetableByVenue(venue1);
+//            return ResponseEntity
+//                    .ok()
+//                    .body(timetables);
+//
+//    }
     @GetMapping("/timetable/venue/{venueName}")
     public ResponseEntity<List<Timetable>> getTimetableByVenueName(@PathVariable String venueName){
-            Venue venue1 = venueRepository.findByName(venueName);
-            List<Timetable> timetables= timetableRepository.findTimetableByVenue(venue1);
-            return ResponseEntity
-                    .ok()
-                    .body(timetables);
+        Venue venue1 = venueRepository.findByName(venueName);
+        List<Timetable> timetables= timetableRepository.findTimetableByVenue(venue1);
+        return ResponseEntity
+                .ok()
+                .body(timetables);
 
     }
 
