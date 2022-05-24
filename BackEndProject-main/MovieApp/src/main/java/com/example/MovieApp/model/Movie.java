@@ -1,6 +1,7 @@
 package com.example.MovieApp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,7 +16,9 @@ public class Movie {
     private int rating;
     private String genre;
     private int price;
+
     @OneToMany(mappedBy = "movie")
+    @JsonManagedReference
     private Set<Timetable> timetables;
 
     public Movie() {

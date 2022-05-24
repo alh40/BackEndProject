@@ -31,10 +31,9 @@ public class MovieController {
 
     @GetMapping("/movies")
     public ResponseEntity<List<Movie>> getAll() {
-        List<Movie> movies= movieRepository.findAll();
         return ResponseEntity
                 .ok()
-                .body(movies);
+                .body(movieRepository.findAll());
     }
 
     @PostMapping("/movies")
