@@ -22,6 +22,7 @@ public class BookingMovie {
         for(int i = 0; i < MovieController.newList.size(); i++){
             writeBookings.write(MovieController.newList.get(i).toString());
             writeBookings.newLine();
+            writeBookings.newLine();
         }
 
 
