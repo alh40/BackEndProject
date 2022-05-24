@@ -58,7 +58,7 @@ public class MovieController {
     public static ArrayList<Timetable> newBooking = new ArrayList<>();
     public static List<String> newList = new ArrayList<>();
 
-
+    public static HashMap<Integer, String> userBookings = new HashMap<>();
 
     @GetMapping(value = "/booking/{title}/{date}/{time}/{user}", produces = {"application/json"})
     public void bookMovie (@PathVariable String title, @PathVariable String time, @PathVariable String date, @PathVariable String user) throws IOException {
@@ -71,11 +71,14 @@ public class MovieController {
             if(timetable.get(i).getTime().equals(time) && timetable.get(i).getDate().equals(date)){
                 newBooking.add(timetable.get(i));
                 newList.add("User: " + user + " UniqueID: " + uniqueId.get(0) + ": " + "\n" + movie1.toString() + " " + "\n" + timetable.get(i).toString() + " " + "\n" + timetable.get(i).getVenue());
+                userBookings.put(uniqueId.get(0), "User: " + movie1.toString() + " " + "\n" + timetable.get(i).toString() + " " + "\n" + timetable.get(i).getVenue());
             }
         }
         uniqueId.remove(0);
         newBooking.remove(0);
         writeToFile();
+
+        System.out.println(userBookings);
 
     }
 
