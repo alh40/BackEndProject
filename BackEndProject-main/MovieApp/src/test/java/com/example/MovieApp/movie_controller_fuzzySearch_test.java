@@ -21,4 +21,10 @@ public class movie_controller_fuzzySearch_test {
         List<Movie> found = movieRepository.findByTitleLike("of");
         assertThat(found.size()).isEqualTo(8);
     }
+
+    @Test
+    public void canGetRating(){
+        List<Movie> found = movieRepository.getMovieByRating(1);
+        assertThat(found.size()).isEqualTo(3);
+    }
 }
