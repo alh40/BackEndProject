@@ -10,7 +10,5 @@ class MovieAppApplicationTests {
 	void contextLoads() {
 	}
 
-    static class TimetableTest {
 
-    }
 }
