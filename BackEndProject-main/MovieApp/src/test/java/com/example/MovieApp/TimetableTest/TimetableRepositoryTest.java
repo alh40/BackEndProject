@@ -51,8 +51,8 @@ class TimetableRepositoryTest {
     void testFindTimetableByVenue(){
 
         String venueName = "ODEON";
-        Venue venue1 = venueRepository.findByName(venueName);
-        List<Timetable> venueNameTimetable = timetableRepository.findTimetableByVenue(venue1);
+        //Venue venue1 = venueRepository.findByName(venueName);
+        List<Timetable> venueNameTimetable = timetableRepository.findTimetableByVenue(venueName);
         assertEquals(venueName, venueNameTimetable.get(0).getVenue().getName());
 
     }
@@ -62,8 +62,8 @@ class TimetableRepositoryTest {
     void testFindTimetableByMovie(){
 
         String movieName = "Maniac";
-        Movie movie1 = movieRepository.findByTitle(movieName);
-        List<Timetable> movieNameTimetable = timetableRepository.findTimetableByMovie(movie1);
+        //Movie movie1 = movieRepository.findByTitle(movieName);
+        List<Timetable> movieNameTimetable = timetableRepository.findTimetableByMovie(movieName);
         assertEquals(movieName, movieNameTimetable.get(0).getMovie().getTitle());
     }
 
