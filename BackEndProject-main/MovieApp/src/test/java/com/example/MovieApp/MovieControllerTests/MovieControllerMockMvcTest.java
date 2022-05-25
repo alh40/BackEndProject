@@ -61,5 +61,14 @@ public class MovieControllerMockMvcTest {
 
     }
 
+    @Test
+    public void shouldReturnMovieWantedByGenre() throws Exception{
+        mvc.perform(get("/movies/genre/drama"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("That Championship Season")));
+
+    }
+
 
 }
