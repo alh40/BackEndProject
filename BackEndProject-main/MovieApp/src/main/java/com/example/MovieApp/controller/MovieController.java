@@ -98,6 +98,12 @@ public class MovieController {
         return ResponseEntity.ok().body(movieWithRating);
     }
 
+    @GetMapping("/movies/genre/drama")
+    public ResponseEntity<List<Movie>> getMovieByGenre(){
+        List<Movie> movieWithRating = movieRepository.dramaMovie();
+        return ResponseEntity.ok().body(movieWithRating);
+    }
+
     @PostMapping(value = "/movies", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Movie> createMovie(@RequestBody Movie movie){
         Movie createdMovie = movieRepository.save(movie);

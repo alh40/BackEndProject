@@ -17,4 +17,8 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     @Query(value = "SELECT * FROM MOVIE WHERE RATING = ?1", nativeQuery = true)
     List<Movie> getMovieByRating(@Param("rating") int rating);
 
+
+    @Query(value = "SELECT * FROM MOVIE WHERE GENRE = 'Drama'", nativeQuery = true)
+    List<Movie> dramaMovie();
+
 }
