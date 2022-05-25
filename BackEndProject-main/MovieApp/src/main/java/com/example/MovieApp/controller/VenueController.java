@@ -23,9 +23,9 @@ public class VenueController {
     }
 
 
-    @GetMapping("/venue/")
-
-    @GetMapping("/venue/name")
+//    @GetMapping("/venue/")
+//
+//    @GetMapping("/venue/name")
 
     public List<Venue> findVenueAlphabetically() {
         return venueRepository.findALL();

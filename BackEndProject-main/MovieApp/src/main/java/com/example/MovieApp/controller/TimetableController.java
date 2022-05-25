@@ -50,33 +50,40 @@ public class TimetableController {
     }
 
 
-//    @GetMapping("/timetable/venue/{venueName}")
-//    public ResponseEntity<List<Timetable>> getTimetableByVenueName(@PathVariable String venueName){
-//        Venue venue1 = venueRepository.findByName(venueName);
-//        List<Timetable> timetables= timetableRepository.findTimetableByVenue(venue1);
-//        return ResponseEntity
-//                .ok()
-//                .body(timetables);
-//
-//    }
+    @GetMapping("/timetable/venue/{venue_name}")
+    public ResponseEntity<List<Timetable>> getTimetableByVenueName(@PathVariable("venue_name") String venue_name){
+        //Venue venue1 = venueRepository.findByName(venueName);
+        List<Timetable> timetables= timetableRepository.findTimetableByVenue(venue_name);
+        return ResponseEntity
+                .ok()
+                .body(timetables);
+
+    }
 
     //get all by movie
-    @GetMapping("/timetable/movie/{movieName}")
-    public ResponseEntity<List<Timetable>> getTimetableByMovieName(@PathVariable String movieName){
-        Movie movie1 = movieRepository.findByTitle(movieName);
-        List<Timetable> timetables= timetableRepository.findTimetableByMovie(movie1);
+    @GetMapping("/timetable/movie/{movie_name}")
+    public ResponseEntity<List<Timetable>> getTimetableByMovieName(@PathVariable("movie_name") String movie_name){
+        //Movie movie1 = movieRepository.findByTitle(movieName);
+        List<Timetable> timetables= timetableRepository.findTimetableByMovie(movie_name);
         return ResponseEntity
                 .ok()
                 .body(timetables);
     }
 
     @PostMapping("/timetable")
-    public ResponseEntity<Timetable> createStudent(@RequestBody Timetable timetable){
+    public ResponseEntity<Timetable> createTimetable(@RequestBody Timetable timetable){
         Timetable timetable1 = timetableRepository.save(timetable);
         return ResponseEntity
                 .ok()
                 .body(timetable1);
     }
+
+    @DeleteMapping("/timetable/{id}")
+    public void deleteTimetable(@PathVariable Long id){
+        timetableRepository.deleteTimetableById(id);
+
+    }
+
 
 
 

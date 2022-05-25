@@ -118,7 +118,6 @@ public class MovieController {
     }
 
     @PutMapping(value = "/update/movies/{id}", produces = {"application/json"})
-
     public Movie updateMovie(@RequestBody Movie movies, @PathVariable Long id){
         return movieRepository.save(movies);
     }
