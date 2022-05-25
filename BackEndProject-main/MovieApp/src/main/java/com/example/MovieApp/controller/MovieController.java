@@ -3,7 +3,6 @@ package com.example.MovieApp.controller;
 import com.example.MovieApp.BookingMovie;
 import com.example.MovieApp.model.Movie;
 import com.example.MovieApp.model.Timetable;
-import org.hibernate.persister.entity.SingleTableEntityPersister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,11 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.MovieApp.repository.MovieRepository;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.sql.Time;
 import java.util.*;
-import java.util.stream.Stream;
 
 import static com.example.MovieApp.BookingMovie.readFile;
 
@@ -70,6 +65,11 @@ public class MovieController {
             }
         }
 
+    }
+
+    @GetMapping("/movies")
+    public ResponseEntity<List<Movie>> getAll(){
+        return new ResponseEntity<>(movieRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/movies/{id}")
