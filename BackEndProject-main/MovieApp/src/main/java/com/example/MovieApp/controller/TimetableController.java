@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.sound.midi.Soundbank;
+import java.sql.Time;
 import java.util.List;
 
 @RestController
@@ -77,6 +78,14 @@ public class TimetableController {
                 .ok()
                 .body(timetable1);
     }
+
+
+    @PutMapping(value = "/timetable/update/{id}", produces = {"application/json"})
+    public Timetable updateMovie(@RequestBody Timetable timetable, @PathVariable Long id){
+        return timetableRepository.save(timetable);
+    }
+
+
 
     @DeleteMapping("/timetable/{id}")
     public void deleteTimetable(@PathVariable Long id){
