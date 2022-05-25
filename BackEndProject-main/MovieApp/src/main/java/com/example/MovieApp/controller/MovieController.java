@@ -34,7 +34,7 @@ public class MovieController {
 
 
 
-
+//"books" a movie viewing by using a GET request to write to file, based on user input
     @GetMapping(value = "/booking/{title}/{date}/{time}/{user}", produces = {"application/json"})
     public void bookMovie (@PathVariable String title, @PathVariable String time, @PathVariable String date, @PathVariable String user) throws IOException {
         ArrayList<Integer> uniqueId = BookingMovie.uniqueIdUser;
@@ -54,8 +54,11 @@ public class MovieController {
         }
 
 
+
+
     }
 
+//    Deletes a movie viewing from file based on a user's uniqueID
     @DeleteMapping("/booking/{id}")
     public void deleteMovieBookingByUniqueId(@PathVariable Long id) throws IOException {
         String integerToString = String.valueOf(id);
@@ -72,12 +75,13 @@ public class MovieController {
 
     }
 
+//    Retrieves the movie information based on its ID in the database
     @GetMapping("/movies/id/{id}")
     public Optional<Movie> getMovieById(@PathVariable Long id){
         return movieRepository.findById(id);
     }
 
-
+//    Retrieves the movie information based on its Title in the database.
     @GetMapping("/movies/title/{title}")
     public ResponseEntity<Movie> getByTitle(@PathVariable String title){
         Movie movie1 = movieRepository.findByTitle(title);
@@ -117,11 +121,13 @@ public class MovieController {
                 .body(createdMovie);
     }
 
+//    Updates the movie information based on movie ID
     @PutMapping(value = "/update/movies/{id}", produces = {"application/json"})
     public Movie updateMovie(@RequestBody Movie movies, @PathVariable Long id){
         return movieRepository.save(movies);
     }
 
+//    Deletes movie information based on movie ID
     @DeleteMapping("/movies/{id}")
     public void deleteMovie(@PathVariable Long id){
         movieRepository.deleteById(id);
