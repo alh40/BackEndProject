@@ -22,7 +22,7 @@ public class VenueController {
         this.venueRepository = venueRepository;
     }
 
-    @GetMapping("/venue/name")
+    @GetMapping("/venue/")
     public List<Venue> findVenueAlphabetically() {
         return venueRepository.findALL();
     }
@@ -36,7 +36,7 @@ public class VenueController {
                 .body(VenueList);
     }
 
-    @GetMapping("/venue/{Name}")
+    @GetMapping("/search/venue/{Name}")
     public ResponseEntity<List<Venue>> Name(
             @PathVariable String Name) {
         if (Name != null) {
