@@ -15,7 +15,7 @@ public interface TimetableRepository extends JpaRepository<Timetable, Long> {
     List<Timetable> findAllByDate(String date);
 
 
-    @Query(value = "SELECT * FROM timetable JOIN VENUE ON venue.id = timetable.venue_id JOIN movie ON movie.id = timetable.movie_id WHERE venue.name = ?1",nativeQuery = true )
+    @Query(value = "SELECT timetable.date, timetable.time, movie.title FROM timetable JOIN VENUE ON venue.id = timetable.venue_id JOIN movie ON movie.id = timetable.movie_id WHERE venue.name = ?1",nativeQuery = true )
     List<Timetable> findTimetableByVenue(@Param("venue_name") String venue_name);
 
 
