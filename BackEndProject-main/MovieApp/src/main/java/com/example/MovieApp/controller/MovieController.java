@@ -103,45 +103,9 @@ public class MovieController {
         return ResponseEntity.ok().body(movieWithRating);
     }
 
-    @GetMapping("/movies/genre/drama")
-    public ResponseEntity<List<Movie>> getDramaMovie(){
-        List<Movie> movieWithRating = movieRepository.dramaMovie();
-        return ResponseEntity.ok().body(movieWithRating);
-    }
-
-    @GetMapping("/movies/genre/documentary")
-    public ResponseEntity<List<Movie>> getDocumentoryMovie(){
-        List<Movie> movieWithRating = movieRepository.documentaryMovie();
-        return ResponseEntity.ok().body(movieWithRating);
-    }
-
-    @GetMapping("/movies/genre/adventure")
-    public ResponseEntity<List<Movie>> getAdventureMovie(){
-        List<Movie> movieWithRating = movieRepository.documentaryMovie();
-        return ResponseEntity.ok().body(movieWithRating);
-    }
-
-    @GetMapping("/movies/genre/action")
-    public ResponseEntity<List<Movie>> getActionMovie(){
-        List<Movie> movieWithRating = movieRepository.actionMovie();
-        return ResponseEntity.ok().body(movieWithRating);
-    }
-
-    @GetMapping("/movies/genre/comedy")
-    public ResponseEntity<List<Movie>> getComedyeMovie(){
-        List<Movie> movieWithRating = movieRepository.comedyMovie();
-        return ResponseEntity.ok().body(movieWithRating);
-    }
-
-    @GetMapping("/movies/genre/Western")
-    public ResponseEntity<List<Movie>> getWesternMovie(){
-        List<Movie> movieWithRating = movieRepository.westernMovie();
-        return ResponseEntity.ok().body(movieWithRating);
-    }
-
-    @GetMapping("/movies/genre/Crime")
-    public ResponseEntity<List<Movie>> getCrimeMovie(){
-        List<Movie> movieWithRating = movieRepository.crimeMovie();
+    @GetMapping("/movies/genre/{genre}")
+    public ResponseEntity<List<Movie>> getDramaMovie(@PathVariable("genre") String genre){
+        List<Movie> movieWithRating = movieRepository.dramaMovie(genre);
         return ResponseEntity.ok().body(movieWithRating);
     }
 

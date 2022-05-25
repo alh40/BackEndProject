@@ -11,7 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
-public class movie_controller_fuzzySearch_test {
+public class movie_controller_test {
     @Autowired
     MovieRepository movieRepository;
 
@@ -26,5 +26,17 @@ public class movie_controller_fuzzySearch_test {
     public void canGetRating(){
         List<Movie> found = movieRepository.getMovieByRating(1);
         assertThat(found.size()).isEqualTo(3);
+    }
+
+    @Test
+    public void comedyMovie(){
+        List<Movie> found = movieRepository.dramaMovie("comedy");
+        assertThat(found.size()).isEqualTo(8);
+    }
+
+    @Test
+    public void cirmeMovie(){
+        List<Movie> found = movieRepository.dramaMovie("crime");
+        assertThat(found.size()).isEqualTo(5);
     }
 }
