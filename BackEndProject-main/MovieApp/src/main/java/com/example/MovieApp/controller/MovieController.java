@@ -54,7 +54,6 @@ public class MovieController {
         }
 
 
-
     }
 
     @DeleteMapping("/booking/{id}")
@@ -72,6 +71,12 @@ public class MovieController {
         }
 
     }
+
+    @GetMapping("/movies/{id}")
+    public Optional<Movie> getMovieById(@PathVariable Long id){
+        return movieRepository.findById(id);
+    }
+
 
     @GetMapping("/movies/{title}")
     public ResponseEntity<Movie> getByTitle(@PathVariable String title){
@@ -146,6 +151,12 @@ public class MovieController {
         return ResponseEntity
                 .ok()
                 .body(createdMovie);
+    }
+
+    @PutMapping(value = "/update/movies/{id}", produces = {"application/json"})
+
+    public Movie updateMovie(@RequestBody Movie movies, @PathVariable Long id){
+        return movieRepository.save(movies);
     }
 
     @DeleteMapping("/movies/{id}")
