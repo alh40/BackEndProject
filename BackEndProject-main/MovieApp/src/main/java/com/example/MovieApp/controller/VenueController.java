@@ -3,6 +3,7 @@ package com.example.MovieApp.controller;
 import com.example.MovieApp.model.Movie;
 import com.example.MovieApp.model.Venue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.MovieApp.repository.VenueRepository;
@@ -21,7 +22,11 @@ public class VenueController {
         this.venueRepository = venueRepository;
     }
 
+
+    @GetMapping("/venue/")
+
     @GetMapping("/venue/name")
+
     public List<Venue> findVenueAlphabetically() {
         return venueRepository.findALL();
     }
@@ -34,6 +39,18 @@ public class VenueController {
                 .ok()
                 .body(VenueList);
     }
+
+    @GetMapping("/search/venue/{Name}")
+    public ResponseEntity<List<Venue>> Name(
+            @PathVariable String Name) {
+        if (Name != null) {
+            return new ResponseEntity<List<Venue>>(
+                    venueRepository.findByName(Name),
+                    HttpStatus.OK);
+        }
+        return new ResponseEntity<>(venueRepository.findAll(), HttpStatus.OK);
+    }
+
 
     @GetMapping("/venue")
     public ResponseEntity<List<Venue>> getAll() {

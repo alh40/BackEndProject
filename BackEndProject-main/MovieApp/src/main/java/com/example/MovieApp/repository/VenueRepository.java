@@ -11,6 +11,9 @@ public interface VenueRepository extends JpaRepository<Venue, Long> {
   @Query(value = "SELECT * FROM VENUE ORDER BY NAME ", nativeQuery = true)
   List<Venue> findALL();
 
+  @Query(value = "SELECT * FROM VENUE WHERE LOWER(NAME) LIKE %:Name%", nativeQuery = true)
+  List<Venue> findByName(@Param("Name")String name);
+
   @Query(value = "SELECT * FROM VENUE WHERE NAME = ?1", nativeQuery = true)
   List<Venue> searchVenue(@Param("Venue") String name);
 }
