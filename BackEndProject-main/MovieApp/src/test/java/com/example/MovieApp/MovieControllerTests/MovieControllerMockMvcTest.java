@@ -43,5 +43,23 @@ public class MovieControllerMockMvcTest {
 
     }
 
+    @Test
+    public void shouldReturnMovieWantedBySubString() throws Exception{
+        mvc.perform(get("/fuzzysearch/season"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("That Championship Season")));
+
+    }
+
+    @Test
+    public void shouldReturnMovieWantedByRating() throws Exception{
+        mvc.perform(get("/movies/rating/1"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("That Championship Season")));
+
+    }
+
 
 }
