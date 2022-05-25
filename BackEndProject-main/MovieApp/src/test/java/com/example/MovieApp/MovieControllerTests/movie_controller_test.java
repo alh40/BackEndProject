@@ -1,4 +1,4 @@
-package com.example.MovieApp;
+package com.example.MovieApp.MovieControllerTests;
 
 import com.example.MovieApp.model.Movie;
 import com.example.MovieApp.repository.MovieRepository;
