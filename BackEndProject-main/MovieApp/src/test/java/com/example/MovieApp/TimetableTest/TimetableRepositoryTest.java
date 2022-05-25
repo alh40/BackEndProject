@@ -47,15 +47,15 @@ class TimetableRepositoryTest {
 
 
     //find timetable by venue name
-    @Test
-    void testFindTimetableByVenue(){
-
-        String venueName = "ODEON";
-        Venue venue1 = venueRepository.findByName(venueName);
-        List<Timetable> venueNameTimetable = timetableRepository.findTimetableByVenue(venue1);
-        assertEquals(venueName, venueNameTimetable.get(0).getVenue().getName());
-
-    }
+//    @Test
+//    void testFindTimetableByVenue(){
+//
+//        String venueName = "ODEON";
+//        Venue venue1 = venueRepository.findByName(venueName);
+//        List<Timetable> venueNameTimetable = timetableRepository.findTimetableByVenue(venue1);
+//        assertEquals(venueName, venueNameTimetable.get(0).getVenue().getName());
+//
+//    }
 
     //find timetable by movie name
     @Test

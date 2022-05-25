@@ -22,17 +22,17 @@ public class VenueController {
     }
 
     @GetMapping("/venue/name")
-    public List<Venue> findVenueAlphabetically(){
+    public List<Venue> findVenueAlphabetically() {
         return venueRepository.findALL();
     }
 
     @GetMapping("/venue/{name}")
-public ResponseEntity <List<Venue>>findVenue (@PathVariable String name){
-List<Venue>VenueList = venueRepository.searchVenue(name);
+    public ResponseEntity<List<Venue>> findVenue(@PathVariable String name) {
+        List<Venue> VenueList = venueRepository.searchVenue(name);
 
-return  ResponseEntity
-        .ok()
-        .body(VenueList);
+        return ResponseEntity
+                .ok()
+                .body(VenueList);
     }
 
     @GetMapping("/venue")
