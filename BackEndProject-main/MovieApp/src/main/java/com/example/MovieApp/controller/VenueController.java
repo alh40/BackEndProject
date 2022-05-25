@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.MovieApp.repository.VenueRepository;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,10 +24,7 @@ public class VenueController {
     }
 
 
-//    @GetMapping("/venue/")
-//
-//    @GetMapping("/venue/name")
-
+    @GetMapping("/venue/name")
     public List<Venue> findVenueAlphabetically() {
         return venueRepository.findALL();
     }
@@ -40,6 +38,14 @@ public class VenueController {
                 .body(VenueList);
     }
 
+    @GetMapping("/venue{id}")
+    public ResponseEntity<List<Venue>> getAll() {
+        List<Venue> all = venueRepository.findAll();
+        return ResponseEntity
+                .ok()
+                .body(all);
+    }
+
     @GetMapping("/search/venue/{Name}")
     public ResponseEntity<List<Venue>> Name(
             @PathVariable String Name) {
@@ -50,19 +56,19 @@ public class VenueController {
         }
         return new ResponseEntity<>(venueRepository.findAll(), HttpStatus.OK);
     }
-
-
-    @GetMapping("/venue")
-    public ResponseEntity<List<Venue>> getAll() {
-        List<Venue> all = venueRepository.findAll();
+    @PostMapping("/venue")
+    public ResponseEntity<Venue> createVenue(@RequestBody Venue venue){
+        Venue venue1 = venueRepository.save(venue);
         return ResponseEntity
                 .ok()
-                .body(all);
+                .body(venue1);
     }
 
-    @DeleteMapping("/venue/{id}")
-    public void deleteVenue(@PathVariable Long id) {
-        venueRepository.deleteById(id);
+    @PutMapping ("/venue/{id}")
+    public Venue updateVenue(@RequestBody Venue venue, @PathVariable Long id){
+        return venueRepository.save(venue);
+
+
     }
 
 }
