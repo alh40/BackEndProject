@@ -18,7 +18,25 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> getMovieByRating(@Param("rating") int rating);
 
 
-    @Query(value = "SELECT * FROM MOVIE WHERE GENRE = 'Drama'", nativeQuery = true)
+    @Query(value = "SELECT * FROM MOVIE WHERE GENRE LIKE 'Drama'", nativeQuery = true)
     List<Movie> dramaMovie();
+
+    @Query(value = "SELECT * FROM MOVIE WHERE GENRE LIKE '%Documentary%'", nativeQuery = true)
+    List<Movie> documentaryMovie();
+
+    @Query(value = "SELECT * FROM MOVIE WHERE GENRE LIKE '%Adventure%'", nativeQuery = true)
+    List<Movie> adventureMovie();
+
+    @Query(value = "SELECT * FROM MOVIE WHERE GENRE LIKE '%Action%'", nativeQuery = true)
+    List<Movie> actionMovie();
+
+    @Query(value = "SELECT * FROM MOVIE WHERE GENRE LIKE '%Comedy%'", nativeQuery = true)
+    List<Movie> comedyMovie();
+
+    @Query(value = "SELECT * FROM MOVIE WHERE GENRE LIKE '%Western%'", nativeQuery = true)
+    List<Movie> westernMovie();
+
+    @Query(value = "SELECT * FROM MOVIE WHERE GENRE = 'Crime'", nativeQuery = true)
+    List<Movie> crimeMovie();
 
 }
