@@ -11,7 +11,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     Movie findByTitle(String title);
 
-    @Query(value = "SELECT * FROM MOVIE WHERE TITLE LIKE %:searchName%", nativeQuery = true)
+    @Query(value = "SELECT * FROM MOVIE WHERE LOWER(TITLE) LIKE %:searchName%", nativeQuery = true)
     List<Movie> findByTitleLike(@Param("searchName") String title);
 
     @Query(value = "SELECT * FROM MOVIE WHERE RATING = ?1", nativeQuery = true)
