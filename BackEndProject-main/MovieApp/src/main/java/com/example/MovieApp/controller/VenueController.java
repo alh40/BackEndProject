@@ -24,7 +24,6 @@ public class VenueController {
 
 
     @GetMapping("/venue/name")
-
     public List<Venue> findVenueAlphabetically() {
         return venueRepository.findALL();
     }
@@ -49,7 +48,6 @@ public class VenueController {
         return new ResponseEntity<>(venueRepository.findAll(), HttpStatus.OK);
     }
 
-
     @GetMapping("/venue")
     public ResponseEntity<List<Venue>> getAll() {
         List<Venue> all = venueRepository.findAll();
@@ -57,10 +55,20 @@ public class VenueController {
                 .ok()
                 .body(all);
     }
+    @PostMapping("/venue")
+    public ResponseEntity<Venue> venue1(@RequestBody Venue venue) {
+        Venue venue1 = venueRepository.save(venue);
+        return ResponseEntity
+                .ok()
+                .body(venue1);
+    }
+
 
     @DeleteMapping("/venue/{id}")
     public void deleteVenue(@PathVariable Long id) {
         venueRepository.deleteById(id);
     }
+
+
 
 }
