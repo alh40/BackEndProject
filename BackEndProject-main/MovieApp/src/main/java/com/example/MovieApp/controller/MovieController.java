@@ -48,7 +48,7 @@ public class MovieController {
                 BookingMovie.newList.add("User: " + user + " UniqueID: " + uniqueId.get(0) + ", " + "\n" + movie1.toString() + " " + "\n" + BookingMovie.timetable.get(i).toString() + " " + "\n" + BookingMovie.timetable.get(i).getVenue());
                 uniqueId.remove(0);
                 BookingMovie.newBooking.remove(0);
-                BookingMovie.writeFile();;
+                BookingMovie.writeFile();
                 readFile();
             }
         }
@@ -66,7 +66,7 @@ public class MovieController {
         for(int i = 0; i < BookingMovie.newList.size(); i++){
             if(BookingMovie.newList.get(i).contains(integerToString)){
                 BookingMovie.newList.remove(i);
-                File deleteFile = new File("/Users/fengyi/Downloads/MovieBookings.txt");
+                File deleteFile = new File("/Users/Alex/Downloads/MovieBookings.txt");
                 deleteFile.delete();
                 BookingMovie.writeToFile();
                 readFile();
