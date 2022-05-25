@@ -72,13 +72,13 @@ public class MovieController {
 
     }
 
-    @GetMapping("/movies/{id}")
+    @GetMapping("/movies/id/{id}")
     public Optional<Movie> getMovieById(@PathVariable Long id){
         return movieRepository.findById(id);
     }
 
 
-    @GetMapping("/movies/{title}")
+    @GetMapping("/movies/title/{title}")
     public ResponseEntity<Movie> getByTitle(@PathVariable String title){
         Movie movie1 = movieRepository.findByTitle(title);
         return ResponseEntity
