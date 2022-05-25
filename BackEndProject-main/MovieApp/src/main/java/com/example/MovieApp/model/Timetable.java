@@ -15,12 +15,12 @@ public class Timetable {
 
     @ManyToOne
     @JoinColumn(name = "venue_id")
-    @JsonBackReference
+    @JsonBackReference(value = "venue")
     private Venue venue;
 
     @ManyToOne
     @JoinColumn(name = "movie_id")
-    @JsonBackReference
+    @JsonBackReference(value = "movie")
     private Movie movie;
 
     private String date;

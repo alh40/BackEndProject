@@ -19,7 +19,7 @@ public class Movie {
     private int price;
 
     @OneToMany(mappedBy = "movie")
-    @JsonManagedReference
+    @JsonManagedReference(value = "movie")
     private Set<Timetable> timetables;
 
 

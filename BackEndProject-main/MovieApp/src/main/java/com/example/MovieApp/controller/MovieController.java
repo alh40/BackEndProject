@@ -6,6 +6,7 @@ import com.example.MovieApp.model.Timetable;
 import org.hibernate.persister.entity.SingleTableEntityPersister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.MovieApp.repository.MovieRepository;
@@ -97,7 +98,7 @@ public class MovieController {
         return ResponseEntity.ok().body(movieWithRating);
     }
 
-    @PostMapping("/movies")
+    @PostMapping(value = "/movies", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Movie> createMovie(@RequestBody Movie movie){
         Movie createdMovie = movieRepository.save(movie);
         return ResponseEntity

@@ -15,7 +15,7 @@ public class Venue {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "venue")
-    @JsonManagedReference
+    @JsonManagedReference(value = "venue")
     private Set<Timetable> timetables;
 
     public Venue() {
