@@ -80,7 +80,7 @@ public class TimetableController {
 
     @DeleteMapping("/timetable/{id}")
     public void deleteTimetable(@PathVariable Long id){
-        timetableRepository.deleteTimetableById(id);
+        timetableRepository.deleteById(id);
 
     }
 
