@@ -74,29 +74,31 @@ public class MovieController {
             if(timetable.get(i).getTime().equals(time) && timetable.get(i).getDate().equals(date)){
                 newBooking.add(timetable.get(i));
                 newList.add("User: " + user + " UniqueID: " + uniqueId.get(0) + ", " + "\n" + movie1.toString() + " " + "\n" + timetable.get(i).toString() + " " + "\n" + timetable.get(i).getVenue());
+                uniqueId.remove(0);
+                newBooking.remove(0);
+                writeToFile();
+                readFile();
             }
         }
-        uniqueId.remove(0);
-        newBooking.remove(0);
-        writeToFile();
-        readFile();
+
 
 
     }
 
     @DeleteMapping("/booking/{id}")
     public void deleteMovieBookingByUniqueId(@PathVariable Long id) throws IOException {
-        String inputStr = String.valueOf(id);
+        String integerToString = String.valueOf(id);
 
         for(int i = 0; i < newList.size(); i++){
-            if(newList.get(i).contains(inputStr)){
+            if(newList.get(i).contains(integerToString)){
                 newList.remove(i);
+                File deleteFile = new File("/Users/Alex/Documents/MovieBookings.txt");
+                deleteFile.delete();
+                writeToFile();
+                readFile();
             }
         }
-        File deleteFile = new File("/Users/Alex/Documents/MovieBookings.txt");
-        deleteFile.delete();
-        writeToFile();
-        readFile();
+
     }
 
     @GetMapping("/movies/{title}")
