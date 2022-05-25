@@ -50,7 +50,7 @@ public class TimetableController {
                 .body(timetables);
     }
 
-
+    //get timetables by venue name
     @GetMapping("/timetable/venue/{venue_name}")
     public ResponseEntity<List<Timetable>> getTimetableByVenueName(@PathVariable("venue_name") String venue_name){
         //Venue venue1 = venueRepository.findByName(venueName);
@@ -61,7 +61,7 @@ public class TimetableController {
 
     }
 
-    //get all by movie
+    //get timetables by venue name
     @GetMapping("/timetable/movie/{movie_name}")
     public ResponseEntity<List<Timetable>> getTimetableByMovieName(@PathVariable("movie_name") String movie_name){
         //Movie movie1 = movieRepository.findByTitle(movieName);
@@ -71,6 +71,8 @@ public class TimetableController {
                 .body(timetables);
     }
 
+
+    //add new timetable
     @PostMapping("/timetable")
     public ResponseEntity<Timetable> createTimetable(@RequestBody Timetable timetable){
         Timetable timetable1 = timetableRepository.save(timetable);
@@ -79,7 +81,7 @@ public class TimetableController {
                 .body(timetable1);
     }
 
-
+    //update  by id
     @PutMapping(value = "/timetable/update/{id}", produces = {"application/json"})
     public Timetable updateMovie(@RequestBody Timetable timetable, @PathVariable Long id){
         return timetableRepository.save(timetable);
@@ -87,6 +89,7 @@ public class TimetableController {
 
 
 
+    //delete by id
     @DeleteMapping("/timetable/{id}")
     public void deleteTimetable(@PathVariable Long id){
         timetableRepository.deleteById(id);
