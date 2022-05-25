@@ -34,19 +34,6 @@ return  ResponseEntity
         .ok()
         .body(VenueList);
     }
-    /* @GetMapping("/venue/{name}")
-   public ResponseEntity<List<Venue>> getAllVenue(@RequestParam(required = false, defaultValue = "false")
-                                                           boolean orderByName) {
-        List<Venue> venue;
-        if (orderByName) {
-            venue = venueRepository.findAll();
-        } else {
-            venue = venueRepository.findAll();
-        }
-        return ResponseEntity
-                .ok()
-                .body(venue);
-    }*/
 
     @GetMapping("/venue")
     public ResponseEntity<List<Venue>> getAll() {
