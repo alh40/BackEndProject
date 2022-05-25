@@ -23,8 +23,6 @@ public class VenueController {
     }
 
 
-    @GetMapping("/venue/")
-
     @GetMapping("/venue/name")
 
     public List<Venue> findVenueAlphabetically() {
