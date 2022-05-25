@@ -51,7 +51,7 @@ class TimetableRepositoryTest {
     void testFindTimetableByVenue(){
 
         String venueName = "ODEON";
-        Venue venue1 = venueRepository.findByName(venueName);
+        Venue venue1 = (Venue) venueRepository.searchVenue(venueName);
         List<Timetable> venueNameTimetable = timetableRepository.findTimetableByVenue(venue1);
         assertEquals(venueName, venueNameTimetable.get(0).getVenue().getName());
 
