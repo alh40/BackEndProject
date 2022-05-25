@@ -44,7 +44,7 @@ public class BookingMovie {
 
 
 
-        File bookings = new File("/Users/Alex/Documents/MovieBookings.txt");
+        File bookings = new File("/Users/fengyi/Downloads/MovieBookings.txt");
 
         bookings.createNewFile();
 
@@ -63,7 +63,7 @@ public class BookingMovie {
 
         public static void readFile() throws FileNotFoundException {
 
-            File bookings = new File("/Users/Alex/Documents/MovieBookings.txt");
+            File bookings = new File("/Users/Fengyi/Downloads/MovieBookings.txt");
 
             Scanner scanner = new Scanner(bookings);
 

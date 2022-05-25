@@ -63,7 +63,7 @@ public class MovieController {
         for(int i = 0; i < BookingMovie.newList.size(); i++){
             if(BookingMovie.newList.get(i).contains(integerToString)){
                 BookingMovie.newList.remove(i);
-                File deleteFile = new File("/Users/Alex/Documents/MovieBookings.txt");
+                File deleteFile = new File("/Users/fengyi/Downloads/MovieBookings.txt");
                 deleteFile.delete();
                 BookingMovie.writeToFile();
                 readFile();
@@ -87,6 +87,7 @@ public class MovieController {
     }
 
     @GetMapping("/fuzzysearch/{searchName}")
+    // fuzzy search movie name
     public ResponseEntity<List<Movie>> searchName(
             @PathVariable String searchName){
         if(searchName != null){
@@ -98,12 +99,14 @@ public class MovieController {
     }
 
     @GetMapping("/movies/rating/{rating}")
+    // get movie by rating
     public ResponseEntity<List<Movie>> getMovieByRating(@PathVariable("rating")int rating){
         List<Movie> movieWithRating = movieRepository.getMovieByRating(rating);
         return ResponseEntity.ok().body(movieWithRating);
     }
 
     @GetMapping("/movies/genre/{genre}")
+    // get movie by genre
     public ResponseEntity<List<Movie>> getDramaMovie(@PathVariable("genre") String genre){
         List<Movie> movieWithRating = movieRepository.dramaMovie(genre);
         return ResponseEntity.ok().body(movieWithRating);
