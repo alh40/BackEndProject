@@ -71,12 +71,19 @@ public class TimetableController {
     }
 
     @PostMapping("/timetable")
-    public ResponseEntity<Timetable> createStudent(@RequestBody Timetable timetable){
+    public ResponseEntity<Timetable> createTimetable(@RequestBody Timetable timetable){
         Timetable timetable1 = timetableRepository.save(timetable);
         return ResponseEntity
                 .ok()
                 .body(timetable1);
     }
+
+    @DeleteMapping("/timetable/{id}")
+    public void deleteTimetable(@PathVariable Long id){
+        timetableRepository.deleteTimetableById(id);
+
+    }
+
 
 
 
