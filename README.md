@@ -21,7 +21,7 @@ From Java's perspective, it contains 3 objects, movie, venue and timetable. The 
 
 <img src="./methods/uml_diagram.png" alt="uml_diagram" />
 
-From Spring boot perspective, it has 4 laysers, persentation layer, business layer, persistence layer, and database layer. It contains controller, repository, model and SQL database to allow users to send and receive requests in JSON format.
+From Spring boot perspective, it has 4 layers, presentation layer, business layer, persistence layer, and database layer. It contains controller, repository, model and SQL database to allow users to send and receive requests in JSON format.
 
 This application is part of the project concluding back-end knowledge we learned for the past 6 weeks using Java, Spring and SQL at Bright Network Technology Academy.
 
@@ -78,7 +78,7 @@ Result:
 
 ### Booking Movies: <a name="booking_movies"></a>
 
-This method can write user's request into a lcoal file called **"MovieBookings.txt"**, also presents it in terminal. 
+This method can write user's request into a local file called **"MovieBookings.txt"**, also presents it in terminal. 
 
 Before using this method, you should check whether the saved file address is correct. You can check it at **"BookingMovie"** file line 47 and 66 and **"MovieController"** file line 69. The advanced usage for booking movie can be realised by sending a request containing the following example: 
 
