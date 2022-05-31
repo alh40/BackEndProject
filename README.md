@@ -40,7 +40,7 @@ To run the project, make sure Technologies 1-3 are installed and then do the fol
 
 1) Download repo
 
-2) type **"createdb movieapp"** into terminal
+2) type `createdb movieapp` into terminal
 
 3) Open project locate - **"src/main/resources/application.properties"**
 If required, enter postgresql username and password on lines 4 and 5 respectively.
